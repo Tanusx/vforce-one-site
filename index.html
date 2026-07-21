@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VForce One — Airsoft com técnica, não com adrenalina barata</title>
+<meta name="description" content="VForce One — equipamentos de airsoft testados em campo, e-books táticos e conteúdo de segurança. Encontre nossos produtos na Amazon, Mercado Livre e TikTok.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#14170f;
+    --bg-1:#1c2118;
+    --bg-2:#252c1f;
+    --line:#3a4331;
+    --sand:#c9bfa5;
+    --sand-dim:#8e8a76;
+    --paper:#ede9de;
+    --brass:#b3803f;
+    --signal:#e0611f;
+    --signal-dim:#7a3616;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg-0);
+    color:var(--paper);
+    font-family:'IBM Plex Sans', -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* ---- header ---- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,23,15,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    letter-spacing:0.14em;
+    font-size:18px;
+    text-decoration:none;
+    color:var(--paper);
+  }
+  .brand span{color:var(--signal);}
+  nav.links{display:flex; gap:28px;}
+  nav.links a{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    color:var(--sand);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  nav.links a:hover, nav.links a:focus-visible{color:var(--signal);}
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--bg-0);
+    background:var(--signal);
+    padding:9px 16px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible{background:var(--paper);}
+  .menu-btn{display:none;}
+
+  /* ---- hero ---- */
+  .hero{
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.18;
+    mask-image:linear-gradient(to bottom, black, transparent 85%);
+  }
+  .hero-inner{position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--signal);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:8px; height:8px;
+    background:var(--signal);
+    display:inline-block;
+    border-radius:1px;
+  }
+  h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:clamp(34px, 6vw, 62px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    margin:0 0 22px;
+    max-width:15ch;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--brass);
+  }
+  .hero p.lead{
+    font-size:18px;
+    color:var(--sand);
+    max-width:52ch;
+    margin:0 0 36px;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:14px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--line);
+  }
+  .btn-primary{background:var(--signal); color:var(--bg-0); border-color:var(--signal);}
+  .btn-primary:hover, .btn-primary:focus-visible{background:#f27a3d;}
+  .btn-ghost{background:transparent; color:var(--paper);}
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--sand); color:var(--sand);}
+
+  .hero-stats{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    max-width:640px;
+  }
+  .hero-stats div{padding-right:16px;}
+  .hero-stats .num{
+    font-family:'Oswald', sans-serif;
+    font-size:26px;
+    color:var(--paper);
+    display:block;
+  }
+  .hero-stats .lbl{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--sand-dim);
+  }
+
+  /* ---- section shared ---- */
+  section{padding:80px 0; border-bottom:1px solid var(--line);}
+  .sec-head{max-width:640px; margin-bottom:48px;}
+  .sec-head .eyebrow{color:var(--brass);}
+  .sec-head .eyebrow::before{background:var(--brass);}
+  h2{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:clamp(26px,4vw,38px);
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .sec-head p{color:var(--sand); font-size:16px; margin:0;}
+
+  /* ---- posicionamento ---- */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .pillar{background:var(--bg-1); padding:28px;}
+  .pillar .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--signal);
+    text-transform:uppercase; letter-spacing:0.08em;
+  }
+  .pillar h3{font-family:'Oswald', sans-serif; font-size:19px; margin:10px 0 8px; font-weight:600;}
+  .pillar p{font-size:14px; color:var(--sand); margin:0;}
+
+  /* ---- quadros fixos: dossier cards ---- */
+  .dossier-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:18px;
+  }
+  .dossier{
+    position:relative;
+    background:var(--bg-1);
+    border:1px solid var(--line);
+    padding:22px;
+    border-radius:var(--radius);
+  }
+  .dossier::before, .dossier::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:2px solid var(--brass);
+  }
+  .dossier::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .dossier::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .dossier .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--sand-dim);
+  }
+  .dossier h3{
+    font-family:'Oswald', sans-serif;
+    font-size:18px; font-weight:600;
+    margin:8px 0 8px;
+  }
+  .dossier p{font-size:14px; color:var(--sand); margin:0 0 14px;}
+  .dossier .meta{
+    display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--sand-dim);
+    text-transform:uppercase; letter-spacing:0.04em;
+    border-top:1px dashed var(--line);
+    padding-top:10px;
+  }
+
+  /* ---- e-books ---- */
+  .ebook-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+  .ebook-row{
+    display:grid;
+    grid-template-columns:60px 1fr auto;
+    align-items:center;
+    gap:20px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .ebook-row .n{
+    font-family:'Oswald', sans-serif;
+    font-size:28px; color:var(--line-num, var(--brass));
+    opacity:0.6;
+  }
+  .ebook-row h3{font-family:'Oswald', sans-serif; font-size:19px; margin:0 0 6px; font-weight:600;}
+  .ebook-row p{margin:0; color:var(--sand); font-size:14px; max-width:56ch;}
+  .ebook-row .go{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--signal); text-decoration:none;
+    white-space:nowrap;
+    border-bottom:1px solid var(--signal-dim);
+    padding-bottom:2px;
+  }
+  .ebook-row .go:hover, .ebook-row .go:focus-visible{color:var(--paper); border-color:var(--paper);}
+
+  /* ---- funil / canais ---- */
+  .channels{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .channel{
+    background:var(--bg-1);
+    border:1px solid var(--line);
+    padding:26px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    color:var(--paper);
+    display:block;
+    transition:transform 0.15s ease, border-color 0.15s ease;
+  }
+  .channel:hover, .channel:focus-visible{border-color:var(--signal); transform:translateY(-2px);}
+  .channel .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--sand-dim);
+    text-transform:uppercase; letter-spacing:0.08em;
+  }
+  .channel h3{font-family:'Oswald', sans-serif; font-size:20px; margin:10px 0 6px; font-weight:600;}
+  .channel p{font-size:14px; color:var(--sand); margin:0 0 16px;}
+  .channel .arrow{font-family:'IBM Plex Mono', monospace; color:var(--signal); font-size:13px;}
+
+  /* ---- safety strip ---- */
+  .safety{
+    background:var(--bg-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:40px 0;
+  }
+  .safety .wrap{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .safety .icon{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--bg-0); background:var(--brass);
+    padding:6px 10px; border-radius:var(--radius); text-transform:uppercase; letter-spacing:0.06em;
+  }
+  .safety p{margin:0; color:var(--sand); font-size:14px; max-width:70ch;}
+
+  /* ---- footer ---- */
+  footer{padding:48px 0 40px;}
+  .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;}
+  .foot-grid .brand{display:block; margin-bottom:10px;}
+  .foot-grid p{color:var(--sand-dim); font-size:13px; max-width:40ch; margin:0;}
+  .foot-links{display:flex; gap:20px; flex-wrap:wrap;}
+  .foot-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--sand); text-decoration:none;
+  }
+  .foot-links a:hover, .foot-links a:focus-visible{color:var(--signal);}
+  .fine{
+    margin-top:32px; padding-top:20px; border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--sand-dim);
+  }
+
+  :focus-visible{outline:2px solid var(--signal); outline-offset:2px;}
+
+  @media (max-width: 860px){
+    .pillars{grid-template-columns:1fr;}
+    .channels{grid-template-columns:1fr;}
+    nav.links{display:none;}
+  }
+  @media (max-width: 560px){
+    .hero-stats{grid-template-columns:repeat(3,1fr); gap:8px;}
+    .ebook-row{grid-template-columns:40px 1fr; }
+    .ebook-row .go{grid-column:1 / -1;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#topo" class="brand">VFORCE <span>ONE</span></a>
+    <nav class="links">
+      <a href="#pilares">Posicionamento</a>
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#ebooks">E-books</a>
+      <a href="#canais">Canais</a>
+    </nav>
+    <a class="nav-cta" href="#canais">Ver ofertas</a>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Equipamento · Técnica · Segurança</div>
+    <h1>Airsoft levado a sério, do equipamento ao <em>treino</em>.</h1>
+    <p class="lead">Réplicas GBB testadas em campo, acessórios táticos e e-books com treino e manutenção — para quem trata o esporte com responsabilidade, não como cenário de filme.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#canais">Ver produtos nas lojas</a>
+      <a class="btn btn-ghost" href="#ebooks">Conhecer os e-books</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="num mono">100%</span><span class="lbl">Testado em campo</span></div>
+      <div><span class="num mono">3</span><span class="lbl">Canais de venda</span></div>
+      <div><span class="num mono">04</span><span class="lbl">Guias táticos</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pilares">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Posicionamento</div>
+      <h2>Uma marca de referência, não de hype.</h2>
+      <p>Conteúdo direto, atualizado e sem glamourizar violência — sempre reforçando uso esportivo e responsável.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="tag">Autoridade</div>
+        <h3>Técnica antes do produto</h3>
+        <p>Segurança, legislação e manutenção explicadas antes de qualquer venda.</p>
+      </div>
+      <div class="pillar">
+        <div class="tag">Prova</div>
+        <h3>Testado em campo real</h3>
+        <p>Sem review patrocinado disfarçado — cada equipamento é usado antes de recomendado.</p>
+      </div>
+      <div class="pillar">
+        <div class="tag">Comunidade</div>
+        <h3>Feito com quem joga</h3>
+        <p>Equipes, campos e clubes de tiro parceiros validam o conteúdo antes de ir ao ar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conteudo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Séries fixas</div>
+      <h2>O que publicamos, toda semana.</h2>
+      <p>Quadros recorrentes que constroem confiança e mantêm o público voltando.</p>
+    </div>
+    <div class="dossier-grid">
+      <div class="dossier">
+        <span class="idx mono">FIC-01</span>
+        <h3>Tática da Semana</h3>
+        <p>Uma técnica de campo por semana: posicionamento, movimentação, comunicação.</p>
+        <div class="meta"><span>Reels</span><span>Semanal</span></div>
+      </div>
+      <div class="dossier">
+        <span class="idx mono">FIC-02</span>
+        <h3>Review Honesto</h3>
+        <p>Análise real de uma réplica ou acessório — prós, contras, para quem serve.</p>
+        <div class="meta"><span>Reels</span><span>Semanal</span></div>
+      </div>
+      <div class="dossier">
+        <span class="idx mono">FIC-03</span>
+        <h3>Segurança em Campo</h3>
+        <p>Proteção ocular, pressão de disparo e uso responsável do equipamento.</p>
+        <div class="meta"><span>Carrossel</span><span>Quinzenal</span></div>
+      </div>
+      <div class="dossier">
+        <span class="idx mono">FIC-04</span>
+        <h3>Desmonta e Limpa</h3>
+        <p>Manutenção básica de réplicas GBB, passo a passo, sem enrolação.</p>
+        <div class="meta"><span>Tutorial</span><span>Quinzenal</span></div>
+      </div>
+      <div class="dossier">
+        <span class="idx mono">FIC-05</span>
+        <h3>Treino em Casa</h3>
+        <p>Exercícios de postura e mira que não exigem campo nem disparo.</p>
+        <div class="meta"><span>Reels</span><span>Semanal</span></div>
+      </div>
+      <div class="dossier">
+        <span class="idx mono">FIC-06</span>
+        <h3>News Airsoft</h3>
+        <p>Novidades do segmento: campeonatos, marcas e mudanças na legislação.</p>
+        <div class="meta"><span>Post</span><span>Semanal</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="safety">
+  <div class="wrap">
+    <span class="icon">Aviso</span>
+    <p>Airsoft é esporte de simulação tática. Todo conteúdo aqui reforça uso de proteção ocular, respeito às leis locais e prática exclusiva em campos autorizados.</p>
+  </div>
+</section>
+
+<section id="ebooks">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Infoprodutos</div>
+      <h2>Guias para treinar e manter seu equipamento.</h2>
+      <p>Conteúdo direto ao ponto, sem enrolação, em formato de checklist e módulos práticos.</p>
+    </div>
+    <div class="ebook-list">
+      <div class="ebook-row">
+        <span class="n mono">01</span>
+        <div>
+          <h3>Manual do Iniciante em Airsoft</h3>
+          <p>Segurança, equipamentos básicos e como estruturar seu primeiro treino.</p>
+        </div>
+        <a class="go" href="#" aria-label="Ver detalhes do Manual do Iniciante em Airsoft">Ver guia →</a>
+      </div>
+      <div class="ebook-row">
+        <span class="n mono">02</span>
+        <div>
+          <h3>Táticas de CQB para Airsoft</h3>
+          <p>Movimentação em ambiente fechado e comunicação de equipe.</p>
+        </div>
+        <a class="go" href="#" aria-label="Ver detalhes de Táticas de CQB para Airsoft">Ver guia →</a>
+      </div>
+      <div class="ebook-row">
+        <span class="n mono">03</span>
+        <div>
+          <h3>Treino em Casa para Airsoft</h3>
+          <p>Postura, mira e manejo de réplica sem depender de campo.</p>
+        </div>
+        <a class="go" href="#" aria-label="Ver detalhes de Treino em Casa para Airsoft">Ver guia →</a>
+      </div>
+      <div class="ebook-row">
+        <span class="n mono">04</span>
+        <div>
+          <h3>Manutenção Essencial de Réplicas GBB</h3>
+          <p>Limpeza, lubrificação e troubleshooting básico, sem termos técnicos soltos.</p>
+        </div>
+        <a class="go" href="#" aria-label="Ver detalhes de Manutenção Essencial de Réplicas GBB">Ver guia →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="canais">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Onde comprar</div>
+      <h2>Nossos produtos estão nestes canais.</h2>
+      <p>Escolha por onde prefere comprar ou acompanhar o conteúdo.</p>
+    </div>
+    <div class="channels">
+      <!-- TODO: substituir "#" pelo link real da loja na Amazon -->
+      <a class="channel" href="#" target="_blank" rel="noopener">
+        <span class="tag">Marketplace</span>
+        <h3>Amazon</h3>
+        <p>Catálogo completo de réplicas e acessórios, com envio rastreado.</p>
+        <span class="arrow">Ver loja →</span>
+      </a>
+      <!-- TODO: substituir "#" pelo link real da loja no Mercado Livre -->
+      <a class="channel" href="#" target="_blank" rel="noopener">
+        <span class="tag">Marketplace</span>
+        <h3>Mercado Livre</h3>
+        <p>Produtos físicos com opções de parcelamento e frete para todo o Brasil.</p>
+        <span class="arrow">Ver loja →</span>
+      </a>
+      <!-- TODO: substituir "#" pelo link real do perfil no TikTok -->
+      <a class="channel" href="#" target="_blank" rel="noopener">
+        <span class="tag">Conteúdo + venda</span>
+        <h3>TikTok</h3>
+        <p>Bastidores, testes em campo e conteúdo exclusivo em vídeo curto.</p>
+        <span class="arrow">Seguir →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#topo" class="brand">VFORCE <span style="color:var(--signal)">ONE</span></a>
+        <p>Conteúdo e equipamento de airsoft para quem trata o esporte com seriedade.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#pilares">Posicionamento</a>
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#ebooks">E-books</a>
+        <a href="#canais">Canais</a>
+      </div>
+    </div>
+    <div class="fine">© <span id="year"></span> VForce One. Links de venda ainda não cadastrados — veja o README para saber onde atualizá-los.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
